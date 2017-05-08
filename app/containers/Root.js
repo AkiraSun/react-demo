@@ -3,13 +3,17 @@ import { Provider } from 'react-redux';
 import { Router,Route,useRouterHistory,IndexRoute } from 'react-router';
 import { createHashHistory } from 'history'
 import route from '../route';
+import store from '../store/index'
 
-var appHistory = useRouterHistory(createHashHistory)({queryKey:false});
+let appHistory = useRouterHistory(createHashHistory)({queryKey:false});
+
 export default class Root extends Component {
   render() {
     if (!this.route) this.route = route;
     return (
-      <Router routes={this.route} history={ appHistory }/>
+      <Provider store={store}>
+        <Router routes={this.route} history={ appHistory }/>
+      </Provider>
       //   {/* <Route path="/" >
       //     <IndexRoute component={Tab}/>
       //     <Route path="/tab" component={ Tab }/>

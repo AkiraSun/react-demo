@@ -1,24 +1,36 @@
-/**
- * Created by panca on 16/8/15.
- */
+'use strict';
+import React, {Component,PropTypes} from "react";
 
-// var React = require('react');
-import React from 'react';
-import './Hello.scss';
+export default class Hello extends Component {
+    constructor (props) {
+      super(props)
+    }
 
-class Hello  extends React.Component  {
-  constructor () {
-    super()
-  }
-
-  render () {
-      return (
-          <div>
-              React+Webpack+ES6从环境搭建到HelloWorld
-              <span>hello  hello</span>
-          </div>
-      );
-  }
+    // msgClickHandle = (data) => {
+    //   // this.setState({
+    //   //   activeKey: item.key
+    //   // })
+    //   console.log(this.props)
+    //   const {toCH} = this.props
+    //   this.props.actionCreate.actionCreate.toCH()
+    // }
+    render() {
+        console.log('hellp',this.props);
+        const {toCH,toEN} = this.props.actionCreate.actionCreate;
+        console.log(toCH)
+        const {msg} = this.props.actionCreate;
+        return (
+            <div>
+                <button onClick={toCH}>翻译成中文</button>
+                <p>{msg}</p>
+                <button onClick={toEN}>翻译成英文</button>
+            </div>
+        )
+    }
 }
 
-module.exports = Hello;
+Hello.proTypes = {
+    msg:PropTypes.string.isRequired,
+    toCH:PropTypes.func.isRequired,
+    toEN:PropTypes.func.isRequired,
+}

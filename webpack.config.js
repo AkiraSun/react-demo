@@ -47,7 +47,23 @@ module.exports = {
               test: /\.(jpe?g|png|gif|svg)$/,
               loader: 'url',
               query: {limit: 10240}
-            }
+            },
+            // Process JS with Babel.
+            // 按需加载antd css
+            {
+              test: /\.(js|jsx)$/,
+              exclude: /(node_modules|bower_components)/,
+              loader: 'babel-loader',
+              query: {
+                plugins: [
+                  ['import', [{ libraryName: "antd", style: 'css' }]],
+                ],
+                // This is a feature of `babel-loader` for webpack (not Babel itself).
+                // It enables caching results in ./node_modules/.cache/babel-loader/
+                // directory for faster rebuilds.
+                cacheDirectory: true
+              }
+            },
         ]
     },
     plugins: [

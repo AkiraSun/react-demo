@@ -3,13 +3,14 @@ import { Route, IndexRedirect } from 'react-router';
 
 import  Hello  from '../components/Hello/Hello';
 import Tab from '../components/Tab/Tab'
+import HelloV from '../containers/HelloV/index'
 const routes = (
   <Route path="/" >
-    <IndexRedirect to="/hello" />
-    <Route >
-      <Route path="/hello" component={ Hello }/>
-      <Route path="/tab" component={ Tab }/>
-    </Route>
+    <IndexRedirect to="HelloV" />
+    {/* <Route component={ App }> */}
+      <Route path="HelloV" component={ HelloV }/>
+      <Route path="tab" component={ Tab }/>
+    {/* </Route> */}
   </Route>
 );
 
