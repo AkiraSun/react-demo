@@ -16,9 +16,9 @@ export default class Hello extends Component {
     // }
     render() {
         console.log('hellp',this.props);
-        const {toCH,toEN} = this.props.actionCreate.actionCreate;
+        const {toCH,toEN} = this.props.props.actionCreate;
         console.log(toCH)
-        const {msg} = this.props.actionCreate;
+        const {msg} = this.props.props;
         return (
             <div>
                 <button onClick={toCH}>翻译成中文</button>

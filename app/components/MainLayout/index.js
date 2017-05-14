@@ -3,12 +3,8 @@ import { Layout, Menu, Icon, Breadcrumb } from 'antd';
 const { Header, Sider, Content, Footer } = Layout;
 import './index.scss';
 
-class App  extends React.Component  {
-  constructor () {
-    super()
-  }
-
-  render () {
+const MainLayout =(props) =>  {
+  const { children } = props;
       return (
         <Layout className="layout">
           <Header>
@@ -31,14 +27,16 @@ class App  extends React.Component  {
               <Breadcrumb.Item>List</Breadcrumb.Item>
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ background: '#fff', padding: 24, minHeight: 500 }}>Content</div>
+            <div style={{ background: '#fff', padding: 24, minHeight: 500 }}>
+                {children}
+            </div>
+
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             Ant Design ©2016 Created by Ant UED
           </Footer>
         </Layout>
       );
-  }
 }
 
-module.exports = App;
+module.exports = MainLayout;
