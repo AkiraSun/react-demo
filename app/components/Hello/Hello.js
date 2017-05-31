@@ -1,19 +1,31 @@
 'use strict';
 import React, {Component,PropTypes} from "react";
-
+import async from 'async'
+import 'babel-polyfill'
+import request from '../../utils/request'
 export default class Hello extends Component {
     constructor (props) {
       super(props)
     }
-
-    // msgClickHandle = (data) => {
-    //   // this.setState({
-    //   //   activeKey: item.key
-    //   // })
-    //   console.log(this.props)
-    //   const {toCH} = this.props
-    //   this.props.actionCreate.actionCreate.toCH()
+    componentDidMount() {
+      this.initData()
+      this.f().then(v => console.log(v))
+    }
+    // async  getTitle(url) {
+    //   let response = await fetch(url);
+    //   let html = await response.text();
+    //   return html.match(/<title>([\s\S]+)<\/title>/i)[1];
     // }
+    async  f() {
+      return 'hello world';
+    }
+    initData() {
+      const paramss = {
+        "base64Data": "data:image/gif;base64,R0lGODlhAQABAJH/AP///wAAAMDAwAAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw=="
+      }
+      console.log(request('POST','upload/uploadBase64',paramss))
+    }
+
     render() {
         console.log('hellp',this.props);
         const {toCH,toEN} = this.props.props.actionCreate;

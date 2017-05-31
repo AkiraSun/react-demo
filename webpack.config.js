@@ -14,7 +14,8 @@ module.exports = {
      /*--devtool eval --progress --colors --content-base build*/
     devServer: {
         inline: true,
-        port: 8181
+        port: 8181,
+        disableHostCheck: true
     },
     module: {
         loaders: [
